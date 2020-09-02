@@ -5,8 +5,8 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface SuperheroService {
-    @GET("/all.json")
-    suspend fun getAllSuperheros() : Response<SuperheroCharacter>
+    @GET("all.json")
+    suspend fun getAllSuperheros() : List<SuperheroCharacter>
 
 
 }

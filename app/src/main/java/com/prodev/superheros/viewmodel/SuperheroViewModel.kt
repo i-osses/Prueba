@@ -1,8 +1,25 @@
 package com.prodev.superheros.viewmodel
-import androidx.databinding.Bindable
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.prodev.superheros.model.SuperheroCharacter
 import com.prodev.superheros.model.SuperheroRepository
+import kotlinx.coroutines.launch
+
+class SuperheroViewModel(private val repository: SuperheroRepository) : ViewModel(){
+
+    val myResponse: MutableLiveData<List<SuperheroCharacter>> = MutableLiveData()
+
+    fun getAllsuperheros() {
+        viewModelScope.launch {
+            val response: List<SuperheroCharacter> = repository.getAllSuperheroes()
+            myResponse.value = response
+        }
+    }
+
+
+/*
 
 class SuperheroViewModel(private val repository: SuperheroRepository) : ViewModel(),
     androidx.databinding.Observable {
@@ -22,8 +39,6 @@ class SuperheroViewModel(private val repository: SuperheroRepository) : ViewMode
     }
 
     override fun removeOnPropertyChangedCallback(callback: androidx.databinding.Observable.OnPropertyChangedCallback?) {
-
     }
-
-
+*/
 }

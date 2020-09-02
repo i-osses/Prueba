@@ -1,14 +1,29 @@
 package com.prodev.superheros.model.network
 
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.prodev.superheros.util.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 class RetrofitInstance {
+
+
     companion object {
+        private val retrofit by lazy {
+            Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+
+        val api: SuperheroService by lazy {
+            retrofit.create(SuperheroService::class.java)
+        }
+
+    }
+
+
+    /*    companion object {
+
         val BASE_URL: String = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api"
         val interceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
@@ -26,6 +41,5 @@ class RetrofitInstance {
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build()
         }
-
-    }
+    }*/
 }
