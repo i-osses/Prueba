@@ -15,7 +15,6 @@ data class SuperheroCharacter (
     val id : Int,
     @ColumnInfo(name ="superhero_name")
     val name : String,
-
     @Embedded val images : Images
 )
 
