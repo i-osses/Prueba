@@ -9,6 +9,8 @@ class RetrofitInstance {
 
     companion object {
         private val retrofit by lazy {
+
+
             Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -18,7 +20,6 @@ class RetrofitInstance {
         val api: SuperheroService by lazy {
             retrofit.create(SuperheroService::class.java)
         }
-
     }
 
 

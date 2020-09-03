@@ -12,6 +12,7 @@ abstract class SuperheroDatabase : RoomDatabase(){
     abstract val superheroDAO : SuperheroDAO
 
     companion object{
+
         @Volatile
         private var INSTANCE : SuperheroDatabase? = null
         fun getInstance(context: Context): SuperheroDatabase {

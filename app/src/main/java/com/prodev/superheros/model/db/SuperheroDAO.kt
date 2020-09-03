@@ -8,10 +8,10 @@ import com.prodev.superheros.model.SuperheroCharacter
 interface SuperheroDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllSuperheroesInDB(MutableListData:List<SuperheroCharacter>)
+    suspend fun insertAllSuperheroes(SuperheroList:List<SuperheroCharacter>)
 
     @Query("SELECT * FROM superhero_data_table")
-    fun getAllSuperheros(): LiveData<List<SuperheroCharacter>>
+    fun getAllSuperherosFromDB(): LiveData<List<SuperheroCharacter>>
 
     @Query("DELETE FROM superhero_data_table")
     fun deleteAll() : Int

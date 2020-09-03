@@ -7,9 +7,10 @@ import com.prodev.superheros.model.SuperheroCharacter
 import com.prodev.superheros.model.SuperheroRepository
 import kotlinx.coroutines.launch
 
-class SuperheroViewModel(private val repository: SuperheroRepository) : ViewModel(){
+class SuperheroViewModel(private val repository: SuperheroRepository) : ViewModel() {
 
     val myResponse: MutableLiveData<List<SuperheroCharacter>> = MutableLiveData()
+    val liveDataFromDB = repository.superheros
 
     fun getAllsuperheros() {
         viewModelScope.launch {
@@ -17,6 +18,9 @@ class SuperheroViewModel(private val repository: SuperheroRepository) : ViewMode
             myResponse.value = response
         }
     }
+
+
+}
 
 
 /*
@@ -34,11 +38,5 @@ class SuperheroViewModel(private val repository: SuperheroRepository) : ViewMode
 
     @Bindable
     var images = MutableLiveData<String>()
-    override fun addOnPropertyChangedCallback(callback: androidx.databinding.Observable.OnPropertyChangedCallback?) {
 
-    }
-
-    override fun removeOnPropertyChangedCallback(callback: androidx.databinding.Observable.OnPropertyChangedCallback?) {
-    }
 */
-}
