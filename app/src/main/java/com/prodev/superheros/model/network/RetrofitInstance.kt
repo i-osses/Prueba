@@ -25,7 +25,6 @@ class RetrofitInstance {
 
     /*    companion object {
 
-        val BASE_URL: String = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api"
         val interceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
         }

@@ -30,37 +30,37 @@ class MainActivity : AppCompatActivity() {
         // Now we can access to the ViewModel
         mviewModel = ViewModelProvider(this, factory).get(SuperheroViewModel::class.java)
         binding.myViewModelMain = mviewModel
+
         binding.lifecycleOwner = this
 
         initRecyclerView()
 
-/*        mviewModel.getAllsuperherosFromInternet()
-        //      mviewModel.getAllSuperheroesFromDatabase()
-        //Coroutines
+        mviewModel.getAllsuperherosFromInternet()
+        /*         //      mviewModel.getAllSuperheroesFromDatabase()
+            //Coroutines
 
-        mviewModel.myResponse.observe(this, Observer {
-            Log.d("TAG", it[0].name)
-            //Log.d("Response", response.id.toString())
-            Log.d("TAG2", it[1].name)
-        })
+            mviewModel.myResponse.observe(this, Observer {
+                Log.d("TAG", it[0].name)
+                //Log.d("Response", response.id.toString())
+                Log.d("TAG2", it[1].name)
+            })
 
-        mviewModel.superheros.observe(this, Observer {
-            Log.d("TAG From DB", it[0].name)
-        })*/
+            mviewModel.superheros.observe(this, Observer {
+                Log.d("TAG From DB", it[0].name)
+            })*/
 
 
     }
 
     private fun initRecyclerView() {
         binding.myRecyclerView.layoutManager = LinearLayoutManager(this)
-        displaySubscribersList()
+        displaySuperherosList()
     }
 
-    private fun displaySubscribersList() {
+    private fun displaySuperherosList() {
 
-        // with the function getAllSubscribers from the Dao interface we get a LiveData List of subscribers
-        // We call to the the Dao function from the repository  and assign LiveData to the property
-
+        // with the function getAllSubscribers from the Dao interface we get a LiveData List of superheros
+        // We call to the the Dao function from the repository and assign LiveData to the property
 
         mviewModel.superheros.observe(this, Observer {
             //  Log.i("MYTAG", it.toString())
