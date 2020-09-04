@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.prodev.superheros.R
 import com.prodev.superheros.databinding.SuperheroItemBinding
 
@@ -15,8 +16,8 @@ class SuperheroAdapter(private val superheroList: List<SuperheroCharacter> = Arr
     class MyViewHolder(val binding: SuperheroItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(superheroCharacter: SuperheroCharacter) {
-            binding.nameTextView.text = " Name \n ${superheroCharacter.name}"
-            binding.idTextView.text = superheroCharacter.id.toString()
+            binding.nameTextView.text = " Name: " + superheroCharacter.name
+            binding.idTextView.text = "Id: " + superheroCharacter.id.toString()
             Glide.with(binding.root)
                 .load(superheroCharacter.images.lg)
                 .into(binding.imageView)
